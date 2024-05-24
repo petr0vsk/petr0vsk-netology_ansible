@@ -1,0 +1,69 @@
+LAY [Homework Playbook] *******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [node2]
+ok: [node1]
+ok: [master]
+
+TASK [Update the package list] *************************************************
+changed: [node1]
+changed: [node2]
+changed: [master]
+
+TASK [Upgrade all packages to the latest version] ******************************
+ok: [node1]
+ok: [node2]
+ok: [master]
+
+TASK [Install specified packages] **********************************************
+ok: [node1]
+ok: [node2]
+ok: [master]
+
+TASK [Copy the test.txt file to /tmp directory on all hosts] *******************
+ok: [node2]
+ok: [node1]
+ok: [master]
+
+TASK [Create groups] ***********************************************************
+changed: [node2] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [master] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [node1] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [node2] => (item={'name': 'test_1', 'group': 'test_1'})
+changed: [node1] => (item={'name': 'test_1', 'group': 'test_1'})
+changed: [master] => (item={'name': 'test_1', 'group': 'test_1'})
+TASK [Upgrade all packages to the latest version] ******************************
+ok: [node1]
+ok: [node2]
+ok: [master]
+
+TASK [Install specified packages] **********************************************
+ok: [node1]
+ok: [node2]
+ok: [master]
+
+TASK [Copy the test.txt file to /tmp directory on all hosts] *******************
+ok: [node2]
+ok: [node1]
+ok: [master]
+
+TASK [Create groups] ***********************************************************
+changed: [node2] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [master] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [node1] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [node2] => (item={'name': 'test_1', 'group': 'test_1'})
+changed: [node1] => (item={'name': 'test_1', 'group': 'test_1'})
+changed: [master] => (item={'name': 'test_1', 'group': 'test_1'})
+
+TASK [Create users with home directories] **************************************
+changed: [node1] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [node2] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [master] => (item={'name': 'devops_1', 'group': 'devops_1'})
+changed: [node1] => (item={'name': 'test_1', 'group': 'test_1'})
+changed: [node2] => (item={'name': 'test_1', 'group': 'test_1'})
+changed: [master] => (item={'name': 'test_1', 'group': 'test_1'})
+
+PLAY RECAP *********************************************************************
+master                     : ok=7    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node1                      : ok=7    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node2                      : ok=7    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
