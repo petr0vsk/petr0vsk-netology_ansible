@@ -1,0 +1,53 @@
+---
+- name: Homework Playbook
+  hosts: all
+  become: yes
+  vars:
+    packages:
+      - net-tools
+      - git
+      - tree
+      - htop
+      - mc
+      - vim
+    users:
+      - name: devops_1
+        group: devops_1
+      - name: test_1
+        group: test_1
+  tasks:
+    - name: Update the package list
+      apt:
+        update_cache: yes
+    
+    - name: Upgrade all packages to the latest version
+      apt:
+        upgrade: dist
+        autoclean: yes
+        autoremove: yes
+
+    - name: Install specified packages
+      apt:
+        name: "{{ packages }}"
+        state: present
+
+    - name: Copy the test.txt file to /tmp directory on all hosts
+      copy:
+        src: ./test.txt
+        dest: /tmp/test.txt
+        mode: '0644'
+
+    - name: Create groups
+      group:
+        name: "{{ item.group }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: Create users with home directories
+      user:
+        name: "{{ item.name }}"
+        group: "{{ item.group }}"
+        home: "/home/{{ item.name }}"
+        state: present
+        create_home: yes
+      loop: "{{ users }}"
